@@ -410,23 +410,53 @@ const moduleContentView = {
             return;
         }
 
-        // For local files: Upload to Firebase Storage
+        // For local files: Upload bypassing Firebase Storage (using Vercel API or free public API)
         try {
-            // Change button to indicate loading
+            if (file.size > 3.5 * 1024 * 1024) {
+                alert("Maksimal ukuran file adalah 3.5 MB. Untuk file berukuran besar, silakan gunakan link Google Drive atau YouTube.");
+                return;
+            }
+
             var submitBtn = document.querySelector('button[onclick="moduleContentView.submitAddContent()"]');
             if (submitBtn) {
                 submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Mengupload...';
                 submitBtn.disabled = true;
             }
 
-            var storageRef = storage.ref();
-            var fileRef = storageRef.child('materials/' + courseId + '/' + moduleId + '/' + Date.now() + '_' + file.name);
-            
-            // Upload file
-            var snapshot = await fileRef.put(file);
-            
-            // Get public download URL
-            var downloadURL = await snapshot.ref.getDownloadURL();
+            // Convert to Base64
+            var reader = new FileReader();
+            var base64Promise = new Promise(function(resolve, reject) {
+                reader.onload = function() { resolve(reader.result); };
+                reader.onerror = function() { reject(new Error("Gagal membaca file")); };
+                reader.readAsDataURL(file);
+            });
+            var base64Data = await base64Promise;
+
+            var downloadURL = "";
+            try {
+                // Try Vercel Serverless API (Permanent hosting via Catbox)
+                var response = await fetch('/api/upload', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ filename: file.name, base64: base64Data })
+                });
+                if (response.status === 404) throw new Error("Local");
+                var result = await response.json();
+                if (!response.ok) throw new Error(result.error);
+                downloadURL = result.url;
+            } catch (e) {
+                // Fallback to tmpfiles.org for local testing
+                console.log("Menggunakan server fallback sementara...");
+                var formData = new FormData();
+                formData.append('file', file);
+                var tmpRes = await fetch('https://tmpfiles.org/api/v1/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                var tmpData = await tmpRes.json();
+                if (tmpData.status !== 'success') throw new Error("Server cadangan gagal merespon");
+                downloadURL = tmpData.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+            }
 
             var finalFormat = 'Unknown';
             var finalDuration = 'TBD';
