@@ -36,8 +36,8 @@ const mediaPlayerView = {
                         ${item.type === 'youtube' ? `
                             <iframe id="mainVideoFrame" class="w-full aspect-video outline-none border-none" src="${item.url}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         ` : `
-                            <video id="mainVideo" class="w-full aspect-video outline-none" controls crossorigin="anonymous">
-                                <source src="${item.url}" type="video/mp4">
+                            <video id="mainVideo" class="w-full aspect-video outline-none" controls>
+                                <source src="${item.url}">
                                 Your browser does not support HTML video.
                             </video>
                         `}
@@ -53,7 +53,7 @@ const mediaPlayerView = {
                             <i class="fa-solid fa-display mr-2 text-primary opacity-70"></i> ${item.resolution}
                         </p>
                         <div class="flex flex-wrap gap-2 mb-8">
-                            ${item.tags.map(t => `<span class="bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">${t}</span>`).join('')}
+                            ${item.tags && item.tags.length > 0 ? item.tags.map(t => `<span class="bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">${t}</span>`).join('') : ''}
                         </div>
 
                         <!-- Video Indexing & Retrieval Section -->
@@ -65,24 +65,24 @@ const mediaPlayerView = {
                             <!-- Keyframes -->
                             <div class="grid grid-cols-3 gap-4 mb-8">
                                 <div class="cursor-pointer group" onclick="mediaPlayerView.seekTo(0)">
-                                    <div class="bg-gray-200 aspect-video rounded-xl mb-2 relative overflow-hidden shadow-sm border border-gray-200 group-hover:border-primary transition-colors">
-                                        <img src="${item.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <div class="bg-gray-200 aspect-video rounded-xl mb-2 relative overflow-hidden shadow-sm border border-gray-200 group-hover:border-primary transition-colors flex items-center justify-center">
+                                        <img src="${item.thumbnail || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                         <div class="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-all"></div>
                                         <span class="absolute bottom-1.5 right-1.5 bg-black bg-opacity-80 backdrop-blur-sm text-white text-[10px] font-mono px-1.5 py-0.5 rounded">00:00</span>
                                     </div>
                                     <p class="text-sm font-bold text-center text-gray-700 group-hover:text-primary transition-colors">Introduction</p>
                                 </div>
                                 <div class="cursor-pointer group" onclick="mediaPlayerView.seekTo(15)">
-                                    <div class="bg-gray-200 aspect-video rounded-xl mb-2 relative overflow-hidden shadow-sm border border-gray-200 group-hover:border-primary transition-colors">
-                                        <img src="${item.thumbnail}" class="w-full h-full object-cover filter brightness-75 group-hover:scale-105 transition-transform duration-500">
+                                    <div class="bg-gray-200 aspect-video rounded-xl mb-2 relative overflow-hidden shadow-sm border border-gray-200 group-hover:border-primary transition-colors flex items-center justify-center">
+                                        <img src="${item.thumbnail || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'}" class="w-full h-full object-cover filter brightness-75 group-hover:scale-105 transition-transform duration-500">
                                         <div class="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-all"></div>
                                         <span class="absolute bottom-1.5 right-1.5 bg-black bg-opacity-80 backdrop-blur-sm text-white text-[10px] font-mono px-1.5 py-0.5 rounded">00:15</span>
                                     </div>
                                     <p class="text-sm font-bold text-center text-gray-700 group-hover:text-primary transition-colors">Synchronization Sync</p>
                                 </div>
                                 <div class="cursor-pointer group" onclick="mediaPlayerView.seekTo(30)">
-                                    <div class="bg-gray-200 aspect-video rounded-xl mb-2 relative overflow-hidden shadow-sm border border-gray-200 group-hover:border-primary transition-colors">
-                                        <img src="${item.thumbnail}" class="w-full h-full object-cover filter contrast-125 group-hover:scale-105 transition-transform duration-500">
+                                    <div class="bg-gray-200 aspect-video rounded-xl mb-2 relative overflow-hidden shadow-sm border border-gray-200 group-hover:border-primary transition-colors flex items-center justify-center">
+                                        <img src="${item.thumbnail || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'}" class="w-full h-full object-cover filter contrast-125 group-hover:scale-105 transition-transform duration-500">
                                         <div class="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-all"></div>
                                         <span class="absolute bottom-1.5 right-1.5 bg-black bg-opacity-80 backdrop-blur-sm text-white text-[10px] font-mono px-1.5 py-0.5 rounded">00:30</span>
                                     </div>
