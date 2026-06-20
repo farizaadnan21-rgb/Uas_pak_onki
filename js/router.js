@@ -15,6 +15,7 @@ const router = {
         if (params.courseId) state.currentCourseId = params.courseId;
         if (params.moduleId) state.currentModuleId = params.moduleId;
         if (params.videoId) state.currentVideoId = params.videoId;
+        if (params.documentId) state.currentDocumentId = params.documentId;
         
         this.render();
     },
@@ -52,6 +53,9 @@ const router = {
                     break;
                 case 'player':
                     viewHtml = mediaPlayerView.render(state.currentVideoId);
+                    break;
+                case 'document':
+                    viewHtml = documentViewerView.render(state.currentDocumentId);
                     break;
                 default:
                     viewHtml = dashboardView.render();

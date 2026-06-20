@@ -149,8 +149,8 @@ const moduleContentView = {
         if (item.type === 'video' || item.type === 'youtube') {
             router.navigate('player', {courseId, moduleId, videoId: itemId});
         } else if (item.type === 'pdf') {
-            // Open PDF in a new browser tab using the blob URL
-            window.open(item.url, '_blank');
+            // Open PDF inside the LMS using the new documentViewer
+            router.navigate('document', {courseId, moduleId, documentId: itemId});
         } else if (item.type === 'audio') {
             alert('[SIMULASI PROTOTIPE]\nMemutar Audio File: ' + item.title + '\nMetadata:\n- Format: ' + item.format + '\n- Duration: ' + item.duration);
         }
