@@ -25,12 +25,6 @@ const dashboardView = {
                             <a href="#" class="flex items-center gap-4 px-5 py-3.5 text-gray-500 hover:bg-gray-50 hover:text-gray-800 rounded-2xl font-bold transition-colors">
                                 <i class="fa-solid fa-calendar-days text-lg"></i> Jadwal Kuliah
                             </a>
-                            <a href="#" class="flex items-center gap-4 px-5 py-3.5 text-gray-500 hover:bg-gray-50 hover:text-gray-800 rounded-2xl font-bold transition-colors">
-                                <i class="fa-solid fa-clipboard-list text-lg"></i> Tugas Saya
-                            </a>
-                            <a href="#" class="flex items-center gap-4 px-5 py-3.5 text-gray-500 hover:bg-gray-50 hover:text-gray-800 rounded-2xl font-bold transition-colors">
-                                <i class="fa-solid fa-chart-line text-lg"></i> Nilai & Evaluasi
-                            </a>
                         </nav>
                         
                         ${state.currentUser && state.currentUser.role === 'lecturer' ? `
@@ -52,7 +46,7 @@ const dashboardView = {
                         
                         <div class="relative z-10">
                             <h1 class="text-3xl md:text-5xl font-black mb-3 tracking-tight drop-shadow-md">Selamat Datang Kembali! 👋</h1>
-                            <p class="text-blue-100 font-medium mb-8 max-w-lg leading-relaxed">Anda memiliki 2 tugas yang mendesak hari ini. Terus semangat belajar dan raih hasil terbaik!</p>
+                            <p class="text-blue-100 font-medium mb-8 max-w-lg leading-relaxed">Terus semangat belajar dan raih hasil terbaik!</p>
                             
                             <div class="flex gap-4">
                                 <div class="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20 flex items-center gap-4 hover:bg-white/20 transition-colors cursor-pointer">
@@ -60,13 +54,6 @@ const dashboardView = {
                                     <div>
                                         <p class="text-[10px] text-blue-100 font-bold uppercase tracking-widest mb-0.5">Total Kelas</p>
                                         <p class="font-black text-2xl">${state.courses.length}</p>
-                                    </div>
-                                </div>
-                                <div class="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20 flex items-center gap-4 hover:bg-white/20 transition-colors cursor-pointer">
-                                    <div class="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center text-yellow-300 shadow-inner border border-yellow-400/20"><i class="fa-solid fa-star text-xl"></i></div>
-                                    <div>
-                                        <p class="text-[10px] text-blue-100 font-bold uppercase tracking-widest mb-0.5">IPK Terkini</p>
-                                        <p class="font-black text-2xl">3.85</p>
                                     </div>
                                 </div>
                             </div>
