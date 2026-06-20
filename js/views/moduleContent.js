@@ -281,8 +281,16 @@ const moduleContentView = {
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2 pl-2">Tags / Kata Kunci (pisahkan dengan koma)</label>
-                        <input type="text" id="contentTags" class="focus:ring-4 focus:ring-indigo-100 focus:border-primary block w-full shadow-sm sm:text-sm border-gray-200 rounded-2xl p-4 border bg-white transition-all font-medium text-gray-700" placeholder="contoh: networking, basic, pdf">
+                        <label class="block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2 pl-2">Template Kata Kunci (Pilih atau ketik sendiri)</label>
+                        <div class="flex flex-wrap gap-2 mb-3" id="keywordTemplates">
+                            <button type="button" onclick="moduleContentView.addTag('Materi Wajib')" class="text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors shadow-sm">Materi Wajib</button>
+                            <button type="button" onclick="moduleContentView.addTag('Tugas')" class="text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors shadow-sm">Tugas</button>
+                            <button type="button" onclick="moduleContentView.addTag('Pengayaan')" class="text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors shadow-sm">Pengayaan</button>
+                            <button type="button" onclick="moduleContentView.addTag('Kuis / Ujian')" class="text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors shadow-sm">Kuis / Ujian</button>
+                            <button type="button" onclick="moduleContentView.addTag('Referensi')" class="text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors shadow-sm">Referensi</button>
+                            <button type="button" onclick="moduleContentView.addTag('Silabus')" class="text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors shadow-sm">Silabus</button>
+                        </div>
+                        <input type="text" id="contentTags" class="focus:ring-4 focus:ring-indigo-100 focus:border-primary block w-full shadow-sm sm:text-sm border-gray-200 rounded-2xl p-4 border bg-white transition-all font-medium text-gray-700" placeholder="Ketik kata kunci lain di sini (pisahkan dengan koma)">
                     </div>
                 </div>
             </div>
@@ -325,6 +333,15 @@ const moduleContentView = {
         }
         var info = document.getElementById('selectedFileInfo');
         if (info) info.classList.add('hidden');
+    },
+
+    addTag(tag) {
+        var input = document.getElementById('contentTags');
+        var current = input.value.split(',').map(function(t) { return t.trim(); }).filter(function(t) { return t; });
+        if (!current.includes(tag)) {
+            current.push(tag);
+            input.value = current.join(', ');
+        }
     },
 
     handleFileSelect(event) {

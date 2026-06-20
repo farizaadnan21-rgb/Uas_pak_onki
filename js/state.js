@@ -296,13 +296,13 @@ const state = {
     },
 
     // Adds a new content item to a specific module
-    addModuleItem(courseId, moduleId, item) {
+    async addModuleItem(courseId, moduleId, item) {
         const course = this.courses.find(c => c.id === courseId);
         if (course) {
             const mod = course.modules.find(m => m.id === moduleId);
             if (mod) {
                 mod.items.push(item);
-                this.saveCourses();
+                await this.saveCourses();
             }
         }
     },

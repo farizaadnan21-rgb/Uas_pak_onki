@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "firebase-ai-logic-basics": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/firebase-ai-logic-basics/SKILL.md",
+      "computedHash": "c1e42edfaf46c3b2c240bc23413991948a8cc77b70dfddd2009e99c35db760eb"
+    },
+    "firebase-basics": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/firebase-basics/SKILL.md",
+      "computedHash": "88fb9ee785fa7aaa74b2c662e53b2aca0b9ee4b67c84587ee017460f54b97471"
+    },
+    "firebase-firestore": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/firebase-firestore/SKILL.md",
+      "computedHash": "09ce3baf45a8d2cd8f32dd48d436628d7d4ac04f24ad351bf3e352a81760ecf8"
+    }
+  }
+}
