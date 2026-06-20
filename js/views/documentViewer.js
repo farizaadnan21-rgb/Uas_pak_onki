@@ -32,7 +32,12 @@ const documentViewerView = {
                 </div>
                 
                 <div class="flex-grow bg-gray-100 rounded-xl overflow-hidden border border-gray-200 shadow-inner flex items-center justify-center relative">
-                    ${item.type === 'pdf' ? `
+                    ${(item.url && item.url.match(/\.(mp4|webm|ogg|mov)$/i)) ? `
+                        <video class="w-full h-full outline-none bg-black" controls>
+                            <source src="${item.url}">
+                            Your browser does not support HTML video.
+                        </video>
+                    ` : item.type === 'pdf' ? `
                         <iframe src="https://docs.google.com/viewer?url=${encodeURIComponent(item.url)}&embedded=true" class="w-full h-full border-none absolute inset-0"></iframe>
                     ` : `
                         <div class="w-full h-full p-4 flex items-center justify-center overflow-auto">

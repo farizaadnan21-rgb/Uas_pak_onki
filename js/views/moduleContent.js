@@ -466,6 +466,16 @@ const moduleContentView = {
                 downloadURL = tmpData.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
             }
 
+            if (file.type.startsWith('video/') || file.name.match(/\.(mp4|webm|ogg|mov)$/i)) {
+                type = 'video';
+            } else if (file.type.startsWith('image/') || file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+                type = 'image';
+            } else if (file.type === 'application/pdf' || file.name.match(/\.(pdf)$/i)) {
+                type = 'pdf';
+            } else if (file.type.startsWith('audio/') || file.name.match(/\.(mp3|wav|ogg)$/i)) {
+                type = 'audio';
+            }
+
             var finalFormat = 'Unknown';
             var finalDuration = 'TBD';
             var finalResolution = 'N/A';
