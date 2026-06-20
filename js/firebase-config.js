@@ -1,12 +1,12 @@
 // js/firebase-config.js
 
 const firebaseConfig = {
-  projectId: "classhub-v2-frizzads",
-  appId: "1:859966391353:web:79a89659dbd8d4ef6439e8",
-  storageBucket: "classhub-v2-frizzads.firebasestorage.app",
-  apiKey: "AIzaSyAXfKJvHGqPT43Jg2Axdic02qUqXAoAP2A",
-  authDomain: "classhub-v2-frizzads.firebaseapp.com",
-  messagingSenderId: "859966391353"
+  projectId: "classhub-v3-frizzads",
+  appId: "1:142336807236:web:0e27dcc3f97e99edd44711",
+  storageBucket: "classhub-v3-frizzads.firebasestorage.app",
+  apiKey: "AIzaSyCHQugS8mAX7RTqcq-I_3oibp3vcpOTq1E",
+  authDomain: "classhub-v3-frizzads.firebaseapp.com",
+  messagingSenderId: "142336807236"
 };
 
 // Initialize Firebase
