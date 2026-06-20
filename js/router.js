@@ -35,6 +35,9 @@ const router = {
                 case 'dashboard':
                     viewHtml = dashboardView.render();
                     break;
+                case 'schedule':
+                    viewHtml = scheduleView.render();
+                    break;
                 case 'courseDetail':
                     viewHtml = courseDetailView.render(state.currentCourseId);
                     break;

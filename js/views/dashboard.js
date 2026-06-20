@@ -22,7 +22,7 @@ const dashboardView = {
                             <a href="#" class="flex items-center gap-4 px-5 py-3.5 bg-indigo-50 text-primary rounded-2xl font-bold transition-colors border border-indigo-100">
                                 <i class="fa-solid fa-shapes text-lg"></i> Beranda Kelas
                             </a>
-                            <a href="#" class="flex items-center gap-4 px-5 py-3.5 text-gray-500 hover:bg-gray-50 hover:text-gray-800 rounded-2xl font-bold transition-colors">
+                            <a href="#" onclick="router.navigate('schedule')" class="flex items-center gap-4 px-5 py-3.5 text-gray-500 hover:bg-gray-50 hover:text-gray-800 rounded-2xl font-bold transition-colors">
                                 <i class="fa-solid fa-calendar-days text-lg"></i> Jadwal Kuliah
                             </a>
                         </nav>
