@@ -130,55 +130,7 @@ const courseDetailView = {
                         </div>
                     </div>
 
-                    <!-- Activity Feed Section -->
-                    <div class="bg-transparent mt-4">
-                        <div class="flex justify-between items-center mb-6 px-1">
-                            <h2 class="text-xl font-extrabold text-gray-800 flex items-center">
-                                <span class="w-8 h-8 rounded-lg bg-yellow-100 text-yellow-600 flex items-center justify-center mr-3"><i class="fa-solid fa-bolt"></i></span>
-                                Feed Aktivitas Terkini
-                            </h2>
-                            <div class="text-sm font-bold text-primary cursor-pointer hover:underline">Lihat Semua</div>
-                        </div>
 
-                        <!-- Timeline Feed -->
-                        <div class="space-y-6 relative before:absolute before:inset-0 before:ml-8 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-gradient-to-b before:from-transparent before:via-gray-100 before:to-transparent">
-                            
-
-                            <!-- Feed Item 2: Quiz -->
-                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active hover:-translate-y-1 transition-transform mt-8">
-                                <div class="flex items-center justify-center w-12 h-12 rounded-2xl border-4 border-white bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transform -rotate-3 group-hover:rotate-0 transition-transform">
-                                    <i class="fa-solid fa-clipboard-question"></i>
-                                </div>
-                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl transition-shadow group-hover:border-green-100">
-                                    <div class="flex items-center justify-between mb-3">
-                                        <span class="text-[10px] text-green-600 bg-green-50 border border-green-100 px-2 py-1 rounded-md font-black uppercase tracking-wider">KUIS BARU</span>
-                                        <time class="text-[10px] text-gray-400 font-bold"><i class="fa-regular fa-clock mr-1"></i> 20 Hari Lalu</time>
-                                    </div>
-                                    <h3 class="text-base font-extrabold text-gray-900 mb-1">Quiz #1: Sinkronisasi Multimedia</h3>
-                                    <p class="text-xs text-gray-500 mb-5 leading-relaxed">Uji pemahaman Anda tentang konsep sinkronisasi pada media berkelanjutan.</p>
-                                    
-                                    <div class="bg-indigo-900 rounded-2xl p-5 border border-indigo-800 flex items-center justify-between my-5 shadow-inner relative overflow-hidden">
-                                        <div class="absolute right-0 top-0 opacity-10 transform translate-x-4 -translate-y-4">
-                                            <i class="fa-solid fa-star text-7xl text-white"></i>
-                                        </div>
-                                        <div class="relative z-10">
-                                            <p class="text-xs font-bold text-indigo-200">Batas: 30 Mei 2026</p>
-                                            <p class="text-xs font-bold text-white mt-1 flex items-center"><i class="fa-solid fa-list-check mr-2 opacity-50"></i> 10 Pertanyaan</p>
-                                        </div>
-                                        <div class="text-center relative z-10 bg-white/10 px-4 py-2 rounded-xl backdrop-blur-md border border-white/20">
-                                            <span class="text-2xl font-black text-yellow-400 leading-none">80</span>
-                                            <p class="text-[8px] uppercase tracking-wider text-indigo-200 font-bold mt-1">Nilai Anda</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex items-center justify-end border-t border-gray-100 pt-4">
-                                        <button class="text-gray-400 hover:text-pink-500 transition-colors text-xs font-bold flex items-center"><i class="fa-regular fa-heart mr-1.5 text-lg"></i> Suka</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
 
                 <!-- RIGHT SIDEBAR (Widgets) -->
@@ -197,35 +149,6 @@ const courseDetailView = {
                     </div>
 
 
-
-                    <!-- Attendance Circular Widget -->
-                    <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-7 relative">
-                        <h3 class="text-sm font-extrabold text-gray-800 mb-6 flex items-center justify-between">
-                            <div class="flex items-center"><span class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-2"><i class="fa-solid fa-user-check"></i></span> Presensi</div>
-                            <button class="w-8 h-8 rounded-full hover:bg-gray-100 text-gray-400 transition-colors flex items-center justify-center"><i class="fa-solid fa-ellipsis"></i></button>
-                        </h3>
-                        
-                        <div class="flex items-center justify-center mb-6">
-                            <!-- Custom Circular Progress using conic-gradient -->
-                            <div class="relative w-40 h-40 rounded-full flex items-center justify-center shadow-inner" style="background: conic-gradient(#4f46e5 56.25%, #f3f4f6 0);">
-                                <div class="absolute w-32 h-32 bg-white rounded-full flex flex-col items-center justify-center shadow-lg border-4 border-white">
-                                    <span class="text-3xl font-black text-gray-800">56%</span>
-                                    <span class="text-[8px] font-black uppercase tracking-widest text-gray-400 mt-1 bg-gray-50 px-2 py-0.5 rounded-md">Kehadiran</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4 text-center mb-2">
-                            <div>
-                                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Hadir</p>
-                                <p class="text-xl font-black text-primary">9 <span class="text-xs font-bold text-gray-300">/ 16</span></p>
-                            </div>
-                            <div>
-                                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Absen</p>
-                                <p class="text-xl font-black text-gray-300">0</p>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
