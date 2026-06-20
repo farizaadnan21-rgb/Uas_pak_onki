@@ -344,7 +344,7 @@ const moduleContentView = {
         }
     },
 
-    submitAddContent() {
+    async submitAddContent() {
         var courseId = document.getElementById('addContentCourseId').value;
         var moduleId = document.getElementById('addContentModuleId').value;
         var type = document.getElementById('contentType').value;
@@ -393,10 +393,23 @@ const moduleContentView = {
             return;
         }
 
-        // For local files: convert to base64 data URL so it persists in localStorage
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            var dataUrl = e.target.result; // base64 data URL
+        // For local files: Upload to Firebase Storage
+        try {
+            // Change button to indicate loading
+            var submitBtn = document.querySelector('button[onclick="moduleContentView.submitAddContent()"]');
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Mengupload...';
+                submitBtn.disabled = true;
+            }
+
+            var storageRef = storage.ref();
+            var fileRef = storageRef.child('materials/' + courseId + '/' + moduleId + '/' + Date.now() + '_' + file.name);
+            
+            // Upload file
+            var snapshot = await fileRef.put(file);
+            
+            // Get public download URL
+            var downloadURL = await snapshot.ref.getDownloadURL();
 
             var finalFormat = 'Unknown';
             var finalDuration = 'TBD';
@@ -423,15 +436,23 @@ const moduleContentView = {
                 resolution: finalResolution,
                 tags: tags,
                 accessRights: rights,
-                url: dataUrl,
+                url: downloadURL,
                 thumbnail: null,
                 fileName: file.name
             };
 
-            state.addModuleItem(courseId, moduleId, newItem);
+            await state.addModuleItem(courseId, moduleId, newItem);
             components.closeModal();
             router.render();
-        };
-        reader.readAsDataURL(file);
+
+        } catch (error) {
+            console.error("Upload error:", error);
+            alert("Gagal mengupload file: " + error.message + "\\n(Pastikan Firebase config sudah diset)");
+            var submitBtn = document.querySelector('button[onclick="moduleContentView.submitAddContent()"]');
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up mr-2"></i> Upload File';
+                submitBtn.disabled = false;
+            }
+        }
     }
 };

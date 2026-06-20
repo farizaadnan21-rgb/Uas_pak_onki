@@ -363,23 +363,33 @@ const state = {
         return this.getAllItems().find(item => item.id === id);
     },
 
-    // Persist courses data to localStorage
-    saveCourses() {
+    // Persist courses data to Firestore
+    async saveCourses() {
         try {
-            localStorage.setItem('classhub_courses', JSON.stringify(this.courses));
+            await db.collection('data').doc('courses').set({ list: this.courses });
         } catch (e) {
-            console.warn('Gagal menyimpan data ke localStorage (mungkin penuh):', e.message);
+            console.warn('Gagal menyimpan data ke Firestore:', e.message);
+            // Fallback to local storage if firebase fails
+            localStorage.setItem('classhub_courses', JSON.stringify(this.courses));
         }
     },
 
-    // Load courses data from localStorage (merges with defaults)
-    loadCourses() {
-        var saved = localStorage.getItem('classhub_courses');
-        if (saved) {
-            try {
+    // Load courses data from Firestore
+    async loadCourses() {
+        try {
+            const docRef = await db.collection('data').doc('courses').get();
+            if (docRef.exists) {
+                this.courses = docRef.data().list;
+            } else {
+                // If it's the first time and DB is empty, seed the initial data
+                console.log('Database kosong, menyimpan data default ke Firestore...');
+                await this.saveCourses();
+            }
+        } catch (e) {
+            console.warn('Gagal memuat data dari Firestore (mungkin Firebase Config belum diatur):', e.message);
+            var saved = localStorage.getItem('classhub_courses');
+            if (saved) {
                 this.courses = JSON.parse(saved);
-            } catch (e) {
-                console.warn('Data localStorage rusak, menggunakan data default.');
             }
         }
     }
@@ -387,5 +397,3 @@ const state = {
 
 // Initialize authentication state from local storage on load
 state.initAuth();
-// Load persisted courses/modules/items
-state.loadCourses();
