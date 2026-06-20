@@ -1,13 +1,13 @@
 // js/firebase-config.js
 
-// TODO: Ganti konfigurasi di bawah ini dengan firebaseConfig dari Firebase Console Anda!
 const firebaseConfig = {
-    apiKey: "AIzaSyDummyKey-GantiDenganMilikAnda",
-    authDomain: "project-id.firebaseapp.com",
-    projectId: "project-id",
-    storageBucket: "project-id.appspot.com",
-    messagingSenderId: "1234567890",
-    appId: "1:1234567890:web:abcdef123456"
+  apiKey: "AIzaSyCzGtDKtV93I4eAj6NICmYSLGFrb8VYK7Y",
+  authDomain: "clashub-b25b0.firebaseapp.com",
+  projectId: "clashub-b25b0",
+  storageBucket: "clashub-b25b0.firebasestorage.app",
+  messagingSenderId: "652620989362",
+  appId: "1:652620989362:web:a270fb87d13178978edaab",
+  measurementId: "G-HFYSNJ95BF"
 };
 
 // Initialize Firebase
