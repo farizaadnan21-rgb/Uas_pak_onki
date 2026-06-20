@@ -199,27 +199,6 @@ const state = {
                 { id: 'm9', name: 'Nadia Putri', role: 'Mahasiswa', email: 'nadia.putri@student.edu' },
                 { id: 'm10', name: 'Fajar Siddiq', role: 'Mahasiswa', email: 'fajar.siddiq@student.edu' }
             ]
-        },
-        {
-            id: 'c8',
-            title: 'TECHNICAL ENGLISH FOR IT (SIA01)',
-            lecturer: 'English Department Faculty',
-            category: 'Teknik Informatika',
-            bannerColor: 'from-purple-800 to-indigo-900',
-            modules: []
-        ,
-            members: [
-                { id: 'm1', name: 'Dr. Onki Alexander', role: 'Pengajar', email: 'onki.alexander@univ.edu' },
-                { id: 'm2', name: 'Safira Faizah, S.Tr.Kom., M.I.T.', role: 'Pengajar', email: 'safira.faizah@univ.edu' },
-                { id: 'm3', name: 'Dian Nugraha, S.ST., MIT', role: 'Pengajar', email: 'dian.nugraha@univ.edu' },
-                { id: 'm4', name: 'Budi Santoso', role: 'Mahasiswa', email: 'budi.santoso@student.edu' },
-                { id: 'm5', name: 'Ayu Lestari', role: 'Mahasiswa', email: 'ayu.lestari@student.edu' },
-                { id: 'm6', name: 'Rizky Ramadhan', role: 'Mahasiswa', email: 'rizky.ramadhan@student.edu' },
-                { id: 'm7', name: 'Siti Aminah', role: 'Mahasiswa', email: 'siti.aminah@student.edu' },
-                { id: 'm8', name: 'Dimas Pratama', role: 'Mahasiswa', email: 'dimas.pratama@student.edu' },
-                { id: 'm9', name: 'Nadia Putri', role: 'Mahasiswa', email: 'nadia.putri@student.edu' },
-                { id: 'm10', name: 'Fajar Siddiq', role: 'Mahasiswa', email: 'fajar.siddiq@student.edu' }
-            ]
         }
     ],
     
