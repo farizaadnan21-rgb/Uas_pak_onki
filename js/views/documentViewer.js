@@ -2,7 +2,7 @@
 const documentViewerView = {
     render(documentId) {
         const item = state.getItemById(documentId);
-        if (!item || item.type !== 'pdf') return `<div class="text-center py-20 text-red-500 font-bold text-xl">Document not found.</div>`;
+        if (!item || (item.type !== 'pdf' && item.type !== 'image')) return `<div class="text-center py-20 text-red-500 font-bold text-xl">Document not found.</div>`;
 
         return `
             <!-- Breadcrumbs -->
@@ -31,8 +31,14 @@ const documentViewerView = {
                     </a>
                 </div>
                 
-                <div class="flex-grow bg-gray-100 rounded-xl overflow-hidden border border-gray-200 shadow-inner">
-                    <iframe src="https://docs.google.com/viewer?url=${encodeURIComponent(item.url)}&embedded=true" class="w-full h-full border-none"></iframe>
+                <div class="flex-grow bg-gray-100 rounded-xl overflow-hidden border border-gray-200 shadow-inner flex items-center justify-center relative">
+                    ${item.type === 'pdf' ? `
+                        <iframe src="https://docs.google.com/viewer?url=${encodeURIComponent(item.url)}&embedded=true" class="w-full h-full border-none absolute inset-0"></iframe>
+                    ` : `
+                        <div class="w-full h-full p-4 flex items-center justify-center overflow-auto">
+                            <img src="${item.url}" class="max-w-full max-h-full object-contain rounded-lg shadow-sm" alt="${item.title}">
+                        </div>
+                    `}
                 </div>
             </div>
         `;

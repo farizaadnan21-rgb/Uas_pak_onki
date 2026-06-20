@@ -148,8 +148,8 @@ const moduleContentView = {
 
         if (item.type === 'video' || item.type === 'youtube') {
             router.navigate('player', {courseId, moduleId, videoId: itemId});
-        } else if (item.type === 'pdf') {
-            // Open PDF inside the LMS using the new documentViewer
+        } else if (item.type === 'pdf' || item.type === 'image') {
+            // Open PDF/Image inside the LMS using the documentViewer
             router.navigate('document', {courseId, moduleId, documentId: itemId});
         } else if (item.type === 'audio') {
             alert('[SIMULASI PROTOTIPE]\nMemutar Audio File: ' + item.title + '\nMetadata:\n- Format: ' + item.format + '\n- Duration: ' + item.duration);
@@ -227,6 +227,7 @@ const moduleContentView = {
                             <option value="video">Video Lokal (Upload MP4)</option>
                             <option value="youtube">Video YouTube (URL)</option>
                             <option value="pdf">Dokumen / Modul (Upload PDF)</option>
+                            <option value="image">Gambar (Upload JPG/PNG)</option>
                             <option value="audio">Audio / Podcast (Upload MP3)</option>
                         </select>
                     </div>
@@ -330,6 +331,9 @@ const moduleContentView = {
             } else if (type === 'pdf') {
                 fileInput.accept = 'application/pdf';
                 fileHint.textContent = 'Format yang diterima: PDF';
+            } else if (type === 'image') {
+                fileInput.accept = 'image/jpeg,image/png,image/gif,image/webp';
+                fileHint.textContent = 'Format yang diterima: JPG, PNG, GIF, WebP';
             } else if (type === 'audio') {
                 fileInput.accept = 'audio/mpeg,audio/mp3,audio/ogg,audio/wav';
                 fileHint.textContent = 'Format yang diterima: MP3, OGG, WAV';
@@ -471,6 +475,9 @@ const moduleContentView = {
                 finalResolution = '1080p';
             } else if (type === 'pdf') {
                 finalFormat = 'PDF';
+                finalDuration = 'N/A';
+            } else if (type === 'image') {
+                finalFormat = 'Image';
                 finalDuration = 'N/A';
             } else if (type === 'audio') {
                 finalFormat = 'MP3';
