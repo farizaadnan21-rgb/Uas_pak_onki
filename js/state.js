@@ -360,9 +360,9 @@ const state = {
             if (docRef.exists) {
                 this.courses = docRef.data().list;
             } else {
-                // If it's the first time and DB is empty, seed the initial data
-                console.log('Database kosong, menyimpan data default ke Firestore...');
-                await this.saveCourses();
+                // Jika DB kosong, kita jangan paksa timpa dengan mock data.
+                // Kita gunakan data awal di memory saja tanpa menyimpannya ke DB.
+                console.log('Database kosong, menggunakan data lokal sementara tanpa menimpa DB.');
             }
         } catch (e) {
             console.warn('Gagal memuat data dari Firestore (mungkin Firebase Config belum diatur):', e.message);
