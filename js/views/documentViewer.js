@@ -25,6 +25,9 @@ const documentViewerView = {
                             <span class="mx-3 opacity-30">|</span> 
                             <i class="fa-solid fa-calendar-day mr-2 text-primary opacity-70"></i> ${item.dateCreated}
                         </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            ${item.tags && item.tags.length > 0 ? item.tags.map(t => `<span class="bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">${t}</span>`).join('') : ''}
+                        </div>
                     </div>
                     <a href="${item.url}" target="_blank" class="bg-indigo-50 text-primary font-bold px-5 py-2.5 rounded-xl hover:bg-primary hover:text-white transition-all transform hover:-translate-y-0.5 border border-indigo-100 shadow-sm flex items-center gap-2">
                         <i class="fa-solid fa-download"></i> Download File Asli
