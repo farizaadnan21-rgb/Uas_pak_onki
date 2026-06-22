@@ -22,16 +22,12 @@ const loginView = {
                             <p class="text-indigo-100 font-medium leading-relaxed">Sistem Manajemen Pembelajaran generasi baru dengan antarmuka modern untuk mendukung Multimedia System.</p>
                         </div>
                         
-                        <div class="relative z-10 mt-12 bg-white/10 p-5 rounded-2xl border border-white/10 backdrop-blur-md">
-                            <p class="text-xs font-bold text-indigo-100 uppercase tracking-widest mb-2"><i class="fa-solid fa-circle-info mr-2"></i> Mode Simulasi</p>
-                            <p class="text-sm text-white/90">Aplikasi ini adalah prototipe SPA. Pilih peran Anda untuk melihat perbedaan hak akses.</p>
-                        </div>
+
                     </div>
 
                     <!-- Right Side: Login Form -->
                     <div class="w-full md:w-7/12 p-10 md:p-16 bg-white relative">
-                        <h2 class="text-3xl font-black text-gray-900 mb-2">Masuk ke Akun</h2>
-                        <p class="text-sm font-bold text-gray-500 mb-10">Silakan isi data sembarang untuk simulasi.</p>
+                        <h2 class="text-3xl font-black text-gray-900 mb-10">Masuk ke Akun</h2>
                         
                         <form onsubmit="event.preventDefault(); loginView.submit();" class="space-y-6">
                             
